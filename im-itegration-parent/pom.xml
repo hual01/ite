@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xxx</groupId>
+	<artifactId>im-itegration-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>im-itegration-api</module>
+		<module>im-itegration-service</module>
+	</modules>
+
+	<!-- springboot父包 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+	</parent>
+
+	<!-- 统一管理版本号 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<springcloud.version>Dalston.SR1</springcloud.version>
+		<mysql.version>8.0.15</mysql.version>
+		<junit.version>4.12</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<lombok.version>1.18.6</lombok.version>
+		<mybatis-plus.version>3.1.0</mybatis-plus.version>
+		<swagger.version>2.9.2</swagger.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 引入springcloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${springcloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- MySQL驱动 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<!-- 数据源工具类 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.1.9</version>
+			</dependency>
+			<!-- mybatis依赖包 -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.1.0</version>
+			</dependency>
+			<!-- mybatis-plus依赖包,含@Table注解 -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<!-- 日志记录logback核心包，比log4j速度快 -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+			<!-- 常用日志记录，和logback功能重叠 -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<!-- junit单元测试 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- springboot的单元测试,和junit功能重叠-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<!-- 包含工具类StringUtils.isNotBlank()的方法 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.8.1</version>
+			</dependency>
+			<!-- 接口文档swagger依赖包 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<!-- 加载资源文件src/main/resources/src/main/java/**/*.xml -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+		<!-- Spring Boot Maven plugin能够将Spring Boot应用打包为可执行的jar或war文件 -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,10 @@
+server:
+  port: 10000
+spring:
+  application:
+   name: itegration-project
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/vhr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai

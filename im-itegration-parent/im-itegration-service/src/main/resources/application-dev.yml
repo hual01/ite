@@ -1,0 +1,19 @@
+server:
+  port: 10000
+spring:
+  application:
+   name: itegration-project
+   
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #com.mysql.jdbc.Driver 是 mysql-connector-java 5中的， com.mysql.cj.jdbc.Driver 是 mysql-connector-java 6版本以上的（我的版本是8）
+    driver-class-name: com.mysql.cj.jdbc.Driver      #com.mysql.jdbc.Driver              # mysql驱动包
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/ite?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml
+  # spring boot集成mybatis的方式打印sql
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  

@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.xxx</groupId>
+		<artifactId>im-itegration-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>im-itegration-service</artifactId>
+	<dependencies>
+		<!-- 启动包 含@SpringBootApplication @Mapscan 等 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- web类依赖包，含@RestController,@RequestMapping等 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- 修改后立即生效，热部署 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- mybatis-plus依赖包,含@Table注解 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<!-- 包含工具类StringUtils.isNotBlank()的方法 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<!-- 接口文档swagger依赖包 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<!-- 配套高版本swagger，不然启动报错 -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>20.0</version>
+		</dependency>
+		<!-- 数据源工具类,必须有，否则报错 Failed to bind properties under 'spring.datasource.type' 
+			to java.lang.Class<javax.sql.DataSource> -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+		</dependency>
+		<!-- mysql连接，必须要，否则报错 Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+	</dependencies>
+</project>
