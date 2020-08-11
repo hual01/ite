@@ -12,7 +12,7 @@ spring:
     password: 123
     url: jdbc:mysql://localhost:3306/ite?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mapper/*/*.xml
   # spring boot集成mybatis的方式打印sql
   configuration:
