@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xxx.yyy.common.EmployeeVo;
+import com.xxx.yyy.common.IteResponse;
 import com.xxx.yyy.common.ResponseBean;
 import com.xxx.yyy.domain.Employee;
 import com.xxx.yyy.service.IIteService;
@@ -30,9 +31,12 @@ public class IteController {
 	public ResponseBean getEmpByPage(@RequestParam(defaultValue = "1") Integer currentPage,
 			@RequestParam(defaultValue = "10") Integer pageSize,Employee employee) {
 		ResponseBean resp = new ResponseBean();
+		IteResponse iteResponse = new IteResponse();
+		
 		IPage<Employee> iPage=iteService.getEmpByPage(currentPage,pageSize,employee);
 		resp.setData(iPage.getRecords());
 		resp.setTotal(iPage.getTotal());
+		iteResponse.setData(iPage);
 		return resp;
 	}
 }

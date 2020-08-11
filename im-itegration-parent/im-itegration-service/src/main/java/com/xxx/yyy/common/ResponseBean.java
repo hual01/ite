@@ -1,7 +1,11 @@
 package com.xxx.yyy.common;
 
 import java.util.List;
-
+/**
+ * 分页查询返回的类
+ * @author fexia
+ *
+ */
 public class ResponseBean {
 	
 	private Long total;//数据条数
