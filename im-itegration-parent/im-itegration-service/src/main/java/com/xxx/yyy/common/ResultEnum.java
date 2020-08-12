@@ -13,6 +13,11 @@ public enum ResultEnum {
 		this.code = code;
 		this.result = result;
 	}
-	
+	public String getCode() {
+		return code;
+	}
+	public String getResult() {
+		return result;
+	}
 	
 }

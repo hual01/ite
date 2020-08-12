@@ -6,7 +6,7 @@ import java.util.List;
  * @author fexia
  *
  */
-public class ResponseBean {
+public class ResponseByPage {
 	
 	private Long total;//数据条数
 	private List<?> data;//返回值集合，注意这里List<?>的写法

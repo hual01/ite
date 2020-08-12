@@ -2,7 +2,6 @@ package com.xxx.yyy.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
@@ -26,7 +25,7 @@ public class MybatisPlusConfig {
 //	@Profile("dev")//指定初始化bean的环境
 	public PerformanceInterceptor performanceInterceptor() {
 		PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-		performanceInterceptor.setMaxTime(3000);//ms,超时报错。
+		performanceInterceptor.setMaxTime(30000);//ms,超时报错。
 		performanceInterceptor.setFormat(true);
 		return performanceInterceptor;
 	}
