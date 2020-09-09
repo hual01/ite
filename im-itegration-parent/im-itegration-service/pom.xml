@@ -60,5 +60,38 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.xxx</groupId>
+			<artifactId>im-itegration-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
+
+
+	<build>
+		<!-- 加载资源文件src/main/resources/src/main/java/**/*.xml -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+		<!-- Spring Boot Maven plugin能够将Spring Boot应用打包为可执行的jar或war文件 -->
+		<!-- 注:此插件应放在需要打包的模块中，如果写在父项目pom.xml会把api模块也打包，会报错，找不到api的主类。 -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+		</plugins>
+		<defaultGoal>compile</defaultGoal>
+	</build>
 </project>

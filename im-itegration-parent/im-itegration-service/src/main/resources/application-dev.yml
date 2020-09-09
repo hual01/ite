@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 10001
 spring:
   application:
    name: itegration-project
@@ -9,8 +9,8 @@ spring:
     #com.mysql.jdbc.Driver 是 mysql-connector-java 5中的， com.mysql.cj.jdbc.Driver 是 mysql-connector-java 6版本以上的（我的版本是8）
     driver-class-name: com.mysql.cj.jdbc.Driver      #com.mysql.jdbc.Driver              # mysql驱动包
     username: root
-    password: 123
-    url: jdbc:mysql://localhost:3306/ite?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    password: MySQL8.0
+    url: jdbc:mysql://123.56.96.72:3306/ite?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     
 mybatis-plus:
   mapper-locations: classpath:mapper/*/*.xml

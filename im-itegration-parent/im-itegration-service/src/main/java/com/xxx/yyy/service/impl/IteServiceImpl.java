@@ -1,12 +1,14 @@
 package com.xxx.yyy.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xxx.yyy.common.EmployeeVo;
 import com.xxx.yyy.dao.IteMapper;
 import com.xxx.yyy.domain.Employee;
 import com.xxx.yyy.service.IIteService;
@@ -28,5 +30,28 @@ public class IteServiceImpl extends ServiceImpl<IteMapper, Employee> implements 
 		Page<Employee> pageDomain = new Page<>(currentPage,pageSize);
 		return iteMapper.getEmpByPage(pageDomain,employee);
 	}
+
+	@Override
+	public int addEmp(Employee employee) {
+		// TODO Auto-generated method stub
+		return iteMapper.insert(employee);
+	}
+
+	@Override
+	public int deleteEmpById(String id) {
+		// TODO Auto-generated method stub
+		return iteMapper.deleteById(id);
+	}
+
+	@Override
+	public int updateEmp(Employee employee) {
+		// TODO Auto-generated method stub
+		QueryWrapper<Employee> wrapper = new QueryWrapper<Employee>();
+		if(employee.getId()!=null) {
+			wrapper.eq("id", employee.getId());
+		}
+		return iteMapper.update(employee, wrapper);
+	}
+
 
 }
