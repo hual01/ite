@@ -11,7 +11,7 @@ public class IteResponse {
 	}
 	//执行失败，或抛出异常，放入msg
 	public static IteResponse error( String msg) {
-		return new IteResponse(ResultCode.ERROR_COD,ResultCode.ERROR_RESULT+msg,null);
+		return new IteResponse(ResultCode.ERROR_COD,ResultCode.ERROR_RESULT,msg);
 	}
 	//因为有了3个参数的构造方法，所以无参构造方法必须显示存在，才能实例化对象。
 	public IteResponse() {

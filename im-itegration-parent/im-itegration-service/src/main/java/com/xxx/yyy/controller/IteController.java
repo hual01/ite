@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xxx.yyy.common.IteResponse;
+import com.xxx.yyy.common.MyException;
 import com.xxx.yyy.domain.Employee;
 import com.xxx.yyy.service.IIteService;
 
@@ -35,54 +36,34 @@ public class IteController {
 	 */
 	@GetMapping("/getEmpByPage")
 	public IteResponse getEmpByPage(@RequestParam(defaultValue = "1") Integer currentPage,
-			@RequestParam(defaultValue = "10") Integer pageSize,Employee employee) {
-		try {
-			IPage<Employee> iPage=iteService.getEmpByPage(currentPage,pageSize,employee);
-			return IteResponse.ok(iPage);
-		} catch (Exception e) {
-			return IteResponse.error(e.getMessage());
-		}
+		@RequestParam(defaultValue = "10") Integer pageSize,Employee employee) {
+		IPage<Employee> iPage=iteService.getEmpByPage(currentPage,pageSize,employee);
+		return IteResponse.ok(iPage);
 	}
 	
 	@PostMapping("/addEmp")
 	@ApiOperation(value = "新增员工")
-	public IteResponse addEmp(@RequestBody Employee employee) {
-		try {
-			int add=iteService.addEmp(employee);
-			return IteResponse.ok(add);
-		} catch (Exception e) {
-			return IteResponse.error(e.getMessage());
-		}
+	public IteResponse addEmp(@RequestBody Employee employee) throws MyException {
+		int add=iteService.addEmp(employee);
+		return IteResponse.ok(add);
 	}
 	@PostMapping("/batchAdddingEmp")
 	@ApiOperation(value = "批量新增员工")
 	public IteResponse batchAdddingEmp(@RequestBody List<Employee> list) {
-		try {
-			boolean add=iteService.saveBatch(list);
-			return IteResponse.ok(add);
-		} catch (Exception e) {
-			return IteResponse.error(e.getMessage());
-		}
+		boolean add=iteService.saveBatch(list);
+		return IteResponse.ok(add);
 	}
 	@DeleteMapping("/deleteEmpById")
 	@ApiOperation(value = "根据ID删除员工")
 	public IteResponse deleteEmpById(@RequestParam String id) {
-		try {
-			int delete=iteService.deleteEmpById(id);
-			return IteResponse.ok(delete);
-		} catch (Exception e) {
-			return IteResponse.error(e.getMessage());
-		}
+		int delete=iteService.deleteEmpById(id);
+		return IteResponse.ok(delete);
 	}
 	@PutMapping("/updateEmp")
 	@ApiOperation(value = "更新员工")
 	public IteResponse updateEmp(@RequestBody Employee employee) {
-		try {
-			int add=iteService.updateEmp(employee);
-			return IteResponse.ok(add);
-		} catch (Exception e) {
-			return IteResponse.error(e.getMessage());
-		}
+		int add=iteService.updateEmp(employee);
+		return IteResponse.ok(add);
 	}
 	
 }

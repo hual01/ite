@@ -2,13 +2,17 @@ package com.xxx.yyy.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xxx.yyy.common.MyException;
 import com.xxx.yyy.dao.IteMapper;
 import com.xxx.yyy.domain.Employee;
 import com.xxx.yyy.service.IIteService;
@@ -20,6 +24,7 @@ import com.xxx.yyy.service.IIteService;
  *
  */
 @Service
+@Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
 public class IteServiceImpl extends ServiceImpl<IteMapper, Employee> implements IIteService{
 	@Autowired
 	IteMapper iteMapper;
@@ -32,8 +37,11 @@ public class IteServiceImpl extends ServiceImpl<IteMapper, Employee> implements 
 	}
 
 	@Override
-	public int addEmp(Employee employee) {
+	public int addEmp(Employee employee) throws MyException {
 		// TODO Auto-generated method stub
+		if(StringUtils.isBlank(employee.getName())) {
+			throw new MyException("姓名不能为空");
+		}
 		return iteMapper.insert(employee);
 	}
 
