@@ -14,7 +14,6 @@ public class CommonExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public IteResponse excute(Exception e) {
 		e.printStackTrace();
-		log.error(e.getMessage());
 		//此处可以自定义多个异常
 		if(e.getClass() == MyException.class){
 			return IteResponse.error(e.getMessage());
