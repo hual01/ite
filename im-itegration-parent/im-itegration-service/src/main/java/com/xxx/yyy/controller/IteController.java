@@ -63,6 +63,7 @@ public class IteController {
 	@ApiOperation(value = "更新员工")
 	public IteResponse updateEmp(@RequestBody Employee employee) {
 		int add=iteService.updateEmp(employee);
+		System.out.println(add);
 		return IteResponse.ok(add);
 	}
 	
